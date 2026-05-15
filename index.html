@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tatenda Mapako — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #0b0f1e;
+    --surface:  #111627;
+    --surface2: #161d30;
+    --border:   rgba(255,255,255,0.08);
+    --border2:  rgba(255,255,255,0.12);
+    --text:     #f0f4ff;
+    --text2:    #c8d4f0;
+    --muted:    #7b8fb5;
+    --blue:     #4f7cff;
+    --purple:   #a78bfa;
+    --pink:     #f472b6;
+    --green:    #34d399;
+    --teal:     #22d3ee;
+    --orange:   #fb923c;
+    --grad:     linear-gradient(135deg, #4f7cff, #a78bfa);
+    --grad2:    linear-gradient(135deg, #22d3ee, #4f7cff);
+    --grad3:    linear-gradient(135deg, #a78bfa, #f472b6);
+    --shadow:   0 2px 16px rgba(0,0,0,0.4);
+    --shadow-h: 0 8px 32px rgba(0,0,0,0.5);
+    --font:     'Plus Jakarta Sans', sans-serif;
+    --r:        18px;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:var(--font); background:var(--bg); color:var(--text);
+    font-size:15px; line-height:1.6; overflow-x:hidden;
+  }
+
+  /* ── STAR FIELD ── */
+  body::before {
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 8%, rgba(255,255,255,.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 60%, rgba(255,255,255,.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 80% 70%, rgba(255,255,255,.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 45%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 85%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 35% 55%, rgba(255,255,255,.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 32%, rgba(255,255,255,.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 88%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5%  50%, rgba(255,255,255,.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 12%, rgba(255,255,255,.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 92%, rgba(255,255,255,.2) 0%, transparent 100%);
+  }
+
+  /* ── GLOW ORBS ── */
+  body::after {
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse 600px 400px at 15% 20%, rgba(79,124,255,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 350px at 85% 75%, rgba(167,139,250,.06) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 50% 50%, rgba(34,211,238,.04) 0%, transparent 70%);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position:sticky; top:0; z-index:200;
+    background:rgba(11,15,30,.85); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-in {
+    max-width:1100px; margin:0 auto; padding:0 28px;
+    display:flex; align-items:center; justify-content:space-between; height:64px;
+  }
+  .logo {
+    font-size:1.35rem; font-weight:800; text-decoration:none; letter-spacing:-.03em;
+    background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .nav-ul { list-style:none; display:flex; gap:2px; }
+  .nav-ul a {
+    padding:7px 13px; border-radius:9px; font-size:.82rem; font-weight:500;
+    color:var(--muted); text-decoration:none; transition:.15s;
+  }
+  .nav-ul a:hover { background:rgba(79,124,255,.12); color:var(--blue); }
+
+  /* ── PAGE ── */
+  .page { max-width:1100px; margin:0 auto; padding:44px 28px 100px; position:relative; z-index:1; }
+
+  /* ── SECTION HEADING ── */
+  .sh-wrap { margin-bottom:26px; }
+  .sh-pill {
+    display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; background:rgba(79,124,255,.15); color:var(--blue);
+    border:1px solid rgba(79,124,255,.25); padding:5px 14px; border-radius:99px; margin-bottom:12px;
+  }
+  .sh { font-size:clamp(1.6rem,3vw,2.2rem); font-weight:800; letter-spacing:-.03em; color:var(--text); }
+  .sh span { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+  /* ── CARD BASE ── */
+  .card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--r); box-shadow:var(--shadow);
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .card:hover { transform:translateY(-4px); box-shadow:var(--shadow-h); border-color:var(--border2); }
+
+  /* ── HERO ── */
+  .hero {
+    padding:60px 56px; margin-bottom:28px;
+    display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; top:-120px; right:-120px;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(167,139,250,.1), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.25);
+    color:var(--green); font-size:.72rem; font-weight:700;
+    padding:6px 14px; border-radius:99px; letter-spacing:.04em; text-transform:uppercase; margin-bottom:20px;
+  }
+  .hero-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+  .hero-name { font-size:clamp(2.2rem,4.5vw,3.4rem); font-weight:800; letter-spacing:-.04em; line-height:1.05; margin-bottom:10px; }
+  .hero-name span { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-role { font-size:1rem; color:var(--muted); margin-bottom:28px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+  .chip {
+    display:inline-flex; align-items:center; gap:6px; font-size:.78rem; font-weight:500;
+    color:var(--text2); background:rgba(255,255,255,.05); border:1px solid var(--border);
+    padding:7px 14px; border-radius:99px; transition:.15s;
+  }
+  .chip:hover { border-color:rgba(79,124,255,.4); color:var(--blue); }
+  .chip svg { width:12px; height:12px; fill:var(--blue); flex-shrink:0; }
+  .hero-btns { display:flex; gap:10px; }
+  .btn { padding:12px 26px; border-radius:10px; font-size:.85rem; font-weight:700; font-family:var(--font); text-decoration:none; cursor:pointer; border:none; transition:.15s; display:inline-flex; align-items:center; gap:7px; }
+  .btn-grad { background:var(--grad); color:#fff; box-shadow:0 4px 18px rgba(79,124,255,.35); }
+  .btn-grad:hover { opacity:.88; transform:translateY(-1px); box-shadow:0 6px 24px rgba(79,124,255,.45); }
+  .btn-out { background:transparent; color:var(--blue); border:1.5px solid rgba(79,124,255,.4); }
+  .btn-out:hover { background:rgba(79,124,255,.1); border-color:var(--blue); }
+  .hero-avatar { width:120px; height:120px; border-radius:28px; background:linear-gradient(135deg, rgba(79,124,255,.2), rgba(167,139,250,.2)); border:1.5px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; font-size:3.2rem; box-shadow:0 8px 32px rgba(79,124,255,.2); }
+
+  /* ── ABOUT ── */
+  .about-grid { display:grid; grid-template-columns:1fr auto; overflow:hidden; margin-bottom:28px; }
+  .about-body { padding:36px 40px; }
+  .about-body p { font-size:.92rem; color:var(--text2); line-height:1.9; margin-bottom:14px; }
+  .about-body p:last-child { margin:0; }
+  .about-stats { display:flex; flex-direction:column; border-left:1px solid var(--border); background:rgba(79,124,255,.04); }
+  .stat-box { padding:22px 32px; text-align:center; border-bottom:1px solid var(--border); flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .stat-box:last-child { border-bottom:none; }
+  .stat-n { font-size:1.9rem; font-weight:800; letter-spacing:-.04em; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .stat-l { font-size:.68rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-top:3px; }
+
+  /* ── FEATURE GRID (4-col) ── */
+  .feat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+  .feat-card { padding:28px 22px; }
+  .feat-icon { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:16px; }
+  .feat-title { font-size:.95rem; font-weight:700; color:var(--text); margin-bottom:8px; }
+  .feat-desc { font-size:.8rem; color:var(--muted); line-height:1.72; }
+
+  /* icon tints */
+  .ic-blue   { background:rgba(79,124,255,.15); }
+  .ic-purple { background:rgba(167,139,250,.15); }
+  .ic-green  { background:rgba(52,211,153,.15); }
+  .ic-teal   { background:rgba(34,211,238,.15); }
+  .ic-orange { background:rgba(251,146,60,.15); }
+  .ic-pink   { background:rgba(244,114,182,.15); }
+
+  /* ── SKILLS ── */
+  .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:28px; }
+  .sk-card { padding:26px 28px; }
+  .sk-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .sk-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .sk-title { font-size:.95rem; font-weight:700; color:var(--text); }
+  .tags { display:flex; flex-wrap:wrap; gap:7px; }
+  .tag { font-size:.72rem; font-weight:500; padding:4px 12px; border-radius:99px; background:rgba(255,255,255,.05); border:1px solid var(--border); color:var(--text2); transition:.15s; cursor:default; }
+  .tag:hover { border-color:rgba(79,124,255,.4); color:var(--blue); }
+  .tag.hi { background:rgba(79,124,255,.12); border-color:rgba(79,124,255,.3); color:var(--blue); }
+
+  /* ── EDUCATION ── */
+  .edu-card { padding:26px 30px; display:grid; grid-template-columns:52px 1fr; gap:20px; align-items:start; margin-bottom:14px; }
+  .edu-icon { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; }
+  .edu-year { font-size:.7rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px; }
+  .edu-school { font-size:1.02rem; font-weight:700; color:var(--text); margin-bottom:2px; }
+  .edu-deg { font-size:.83rem; color:var(--muted); font-style:italic; margin-bottom:10px; }
+  .edu-detail { font-size:.82rem; color:var(--text2); line-height:1.78; }
+  .edu-detail strong { font-weight:600; color:var(--text); }
+
+  /* ── PROJECTS ── */
+  .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px; }
+  .proj-card { padding:26px; display:flex; flex-direction:column; }
+  .proj-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px; }
+  .proj-icon { width:52px; height:52px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+  .proj-num { font-size:.68rem; font-weight:700; background:rgba(255,255,255,.07); border:1px solid var(--border); color:var(--muted); padding:3px 10px; border-radius:99px; }
+  .proj-title { font-size:.97rem; font-weight:700; color:var(--text); margin-bottom:9px; line-height:1.4; }
+  .proj-desc { font-size:.81rem; color:var(--muted); line-height:1.75; flex:1; margin-bottom:14px; }
+  .proj-link { font-size:.77rem; font-weight:700; color:var(--blue); text-decoration:none; display:inline-flex; align-items:center; gap:4px; }
+  .proj-link:hover { color:var(--purple); }
+
+  /* ── EXPERIENCE ── */
+  .exp-card { padding:30px 34px; display:grid; grid-template-columns:58px 1fr; gap:22px; margin-bottom:28px; }
+  .exp-icon { width:50px; height:50px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+  .exp-year { font-size:.7rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px; }
+  .exp-role { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:2px; }
+  .exp-org { font-size:.83rem; color:var(--muted); font-style:italic; margin-bottom:14px; }
+  .exp-list { list-style:none; }
+  .exp-list li { font-size:.83rem; color:var(--text2); line-height:1.8; padding-left:18px; position:relative; margin-bottom:6px; }
+  .exp-list li::before { content:'→'; position:absolute; left:0; color:var(--blue); font-size:.72rem; top:2px; }
+
+  /* ── SOFT SKILLS ── */
+  .soft-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px; }
+  .soft-card { padding:24px 18px; text-align:center; }
+  .soft-icon-wrap { width:52px; height:52px; border-radius:14px; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+  .soft-label { font-size:.83rem; font-weight:600; color:var(--text); line-height:1.35; }
+
+  /* ── CONTACT ── */
+  .contact-card {
+    border-radius:24px; padding:64px 48px; text-align:center;
+    position:relative; overflow:hidden;
+    background:linear-gradient(160deg, #0d1226 0%, #131635 40%, #0e1a2e 100%);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .contact-card::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image: radial-gradient(1px 1px at 8% 20%, rgba(255,255,255,.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 60%, rgba(255,255,255,.25) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 35% 12%, rgba(255,255,255,.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 35%, rgba(255,255,255,.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 75% 65%, rgba(255,255,255,.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 15%, rgba(255,255,255,.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 50%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 12% 85%, rgba(255,255,255,.2) 0%, transparent 100%);
+  }
+  .contact-card::after {
+    content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; border-radius:50%;
+    background:radial-gradient(circle, rgba(167,139,250,.12), transparent 70%); pointer-events:none;
+  }
+  .c-pill {
+    display:inline-block; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+    color:rgba(255,255,255,.65); font-size:.7rem; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; padding:6px 16px; border-radius:99px; margin-bottom:22px;
+    position:relative; z-index:1;
+  }
+  .c-title { font-size:clamp(1.9rem,4vw,3rem); font-weight:800; color:#fff; letter-spacing:-.04em; margin-bottom:12px; position:relative; z-index:1; }
+  .c-title span { background:linear-gradient(90deg,#a78bfa,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .c-sub { color:rgba(255,255,255,.5); font-size:.9rem; margin-bottom:40px; position:relative; z-index:1; max-width:480px; margin-left:auto; margin-right:auto; margin-bottom:40px; }
+  .c-links { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-bottom:40px; position:relative; z-index:1; }
+  .c-link {
+    display:inline-flex; align-items:center; gap:9px;
+    background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.15);
+    color:rgba(255,255,255,.85); font-size:.83rem; font-weight:500;
+    padding:12px 24px; border-radius:10px; text-decoration:none; transition:.15s;
+  }
+  .c-link:hover { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.3); color:#fff; }
+  .c-link svg { width:14px; height:14px; fill:currentColor; }
+  .c-foot { font-size:.72rem; color:rgba(255,255,255,.25); border-top:1px solid rgba(255,255,255,.08); padding-top:26px; position:relative; z-index:1; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .55s ease,transform .55s ease; }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .feat-grid { grid-template-columns:1fr 1fr; }
+    .proj-grid { grid-template-columns:1fr 1fr; }
+    .soft-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:680px){
+    .hero { grid-template-columns:1fr; padding:32px 24px; }
+    .hero-avatar { display:none; }
+    .about-grid { grid-template-columns:1fr; }
+    .about-stats { flex-direction:row; border-left:none; border-top:1px solid var(--border); }
+    .stat-box { border-bottom:none; border-right:1px solid var(--border); }
+    .stat-box:last-child { border-right:none; }
+    .skills-grid,.feat-grid,.proj-grid,.soft-grid { grid-template-columns:1fr; }
+    .exp-card { grid-template-columns:1fr; }
+    .contact-card { padding:40px 22px; }
+    .nav-ul { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="#" class="logo">TM.</a>
+    <ul class="nav-ul">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="card hero reveal">
+    <div>
+      <div class="hero-badge">Available for Industrial Attachment</div>
+      <h1 class="hero-name">Tatenda Parminus<br><span>Mapako</span></h1>
+      <p class="hero-role">Information Technology Student · Harare Institute of Technology</p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>38 Glenville Road, Hatfield, Harare</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.91 15.91 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.47 11.47 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.39 21 3 14.61 3 7a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.47 11.47 0 0 0 .57 3.58 1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>+263 78 351 4879</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>tatendamapako04@gmail.com</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>ID: 63-3470995D34</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-grad">Get In Touch</a>
+        <a href="#projects" class="btn btn-out">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-avatar">👨‍💻</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sh-wrap reveal"><div class="sh-pill">About</div><h2 class="sh">Who I <span>Am</span></h2></div>
+    <div class="card about-grid reveal">
+      <div class="about-body">
+        <p>A self-motivated and adaptable Information Technology student at the Harare Institute of Technology (HIT) with a strong academic foundation in networking, systems, and software development.</p>
+        <p>I bring practical knowledge in database management, programming, and IT infrastructure — and a genuine drive to apply these skills in real-world professional environments.</p>
+        <p>Currently seeking industrial attachment opportunities and open to diverse roles within the IT field.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-n">4+</div><div class="stat-l">Languages</div></div>
+        <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Projects</div></div>
+        <div class="stat-box"><div class="stat-n">9</div><div class="stat-l">O-Levels</div></div>
+        <div class="stat-box"><div class="stat-n">HIT</div><div class="stat-l">Institution</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section>
+    <div class="sh-wrap reveal"><div class="sh-pill">Capabilities</div><h2 class="sh">What I <span>Do</span></h2></div>
+    <div class="feat-grid">
+      <div class="card feat-card reveal"><div class="feat-icon ic-blue">💻</div><div class="feat-title">Software Development</div><div class="feat-desc">Building applications in Java, Python, C#, and PHP using Object-Oriented principles and clean logic.</div></div>
+      <div class="card feat-card reveal"><div class="feat-icon ic-teal">🌐</div><div class="feat-title">Networking</div><div class="feat-desc">Foundational knowledge of TCP/IP, Data Communications, and Network Topologies.</div></div>
+      <div class="card feat-card reveal"><div class="feat-icon ic-green">🗄️</div><div class="feat-title">Database Systems</div><div class="feat-desc">Designing and managing relational databases using SQL, RDBMS, and schema design.</div></div>
+      <div class="card feat-card reveal"><div class="feat-icon ic-purple">🛠️</div><div class="feat-title">Tools & DevOps</div><div class="feat-desc">Git, VS Code, Android Studio, and Advanced Excel for development and productivity.</div></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sh-wrap reveal"><div class="sh-pill">Technical</div><h2 class="sh">Skills & <span>Stack</span></h2></div>
+    <div class="skills-grid">
+      <div class="card sk-card reveal">
+        <div class="sk-head"><div class="sk-icon ic-teal">🔗</div><span class="sk-title">Networking & Infrastructure</span></div>
+        <div class="tags"><span class="tag hi">TCP/IP</span><span class="tag hi">Network Topologies</span><span class="tag">Data Communications</span><span class="tag">OS Architecture</span><span class="tag">Process Management</span><span class="tag">Memory Management</span><span class="tag">Network Security</span></div>
+      </div>
+      <div class="card sk-card reveal">
+        <div class="sk-head"><div class="sk-icon ic-blue">⌨️</div><span class="sk-title">Programming</span></div>
+        <div class="tags"><span class="tag hi">Java</span><span class="tag hi">Python</span><span class="tag hi">C#</span><span class="tag">PHP</span><span class="tag">HTML &amp; CSS</span><span class="tag">OOP</span><span class="tag">DSA</span></div>
+      </div>
+      <div class="card sk-card reveal">
+        <div class="sk-head"><div class="sk-icon ic-green">🗄️</div><span class="sk-title">Databases</span></div>
+        <div class="tags"><span class="tag hi">SQL</span><span class="tag hi">RDBMS</span><span class="tag">Schema Design</span><span class="tag">Microsoft Access</span><span class="tag">Data Integrity</span></div>
+      </div>
+      <div class="card sk-card reveal">
+        <div class="sk-head"><div class="sk-icon ic-orange">🛠️</div><span class="sk-title">Tools & Productivity</span></div>
+        <div class="tags"><span class="tag hi">Git / GitHub</span><span class="tag hi">VS Code</span><span class="tag">Android Studio</span><span class="tag">Advanced Excel</span><span class="tag">PowerPoint</span><span class="tag">Fast Typing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="sh-wrap reveal"><div class="sh-pill">Academic</div><h2 class="sh">Education</h2></div>
+    <div class="card edu-card reveal">
+      <div class="edu-icon ic-blue">🎓</div>
+      <div>
+        <div class="edu-year">2024 – Present</div>
+        <div class="edu-school">Harare Institute of Technology (HIT)</div>
+        <div class="edu-deg">Bachelor of Technology (Honours) in Information Technology</div>
+        <div class="edu-detail"><strong>Core Modules:</strong> Data Communications & Computer Networks, Database Systems, Operating Systems, Software Engineering, and Object-Oriented Programming.</div>
+      </div>
+    </div>
+    <div class="card edu-card reveal">
+      <div class="edu-icon ic-purple">📚</div>
+      <div>
+        <div class="edu-year">A-Level & O-Level</div>
+        <div class="edu-school">St John's High School, Chikwaka</div>
+        <div class="edu-deg">A-Level & O-Level Qualifications</div>
+        <div class="edu-detail"><strong>A-Level:</strong> Pure Mathematics, Computer Science, and Geography.<br><strong>O-Level:</strong> 9 Subjects including English, Geography, and Computer Science.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sh-wrap reveal"><div class="sh-pill">Work</div><h2 class="sh">Projects</h2></div>
+    <div class="proj-grid">
+      <div class="card proj-card reveal">
+        <div class="proj-top"><div class="proj-icon ic-green">🗄️</div><span class="proj-num">01</span></div>
+        <div class="proj-title">Database Architecture & Implementation</div>
+        <div class="proj-desc">Designed and deployed relational database systems using SQL to manage structured data. Optimized retrieval using Data Structures and Algorithms during academic simulations.</div>
+        <div class="tags"><span class="tag hi">SQL</span><span class="tag">RDBMS</span><span class="tag">Schema Design</span><span class="tag">DSA</span></div>
+      </div>
+      <div class="card proj-card reveal">
+        <div class="proj-top"><div class="proj-icon ic-blue">📋</div><span class="proj-num">02</span></div>
+        <div class="proj-title">Academic Records Logic System</div>
+        <div class="proj-desc">Built a logic-based system for managing student records — focused on automated sorting and efficient data processing using programming principles.</div>
+        <div class="tags"><span class="tag hi">Java</span><span class="tag">Logic Systems</span><span class="tag">Data Processing</span><span class="tag">Algorithms</span></div>
+      </div>
+      <div class="card proj-card reveal">
+        <div class="proj-top"><div class="proj-icon ic-purple">🏫</div><span class="proj-num">03</span></div>
+        <div class="proj-title">Support Contributor — Maita Africa</div>
+        <div class="proj-desc">Provided support for Maita Africa, an AI-powered school management platform serving 10,000+ users. Assisted with platform testing, troubleshooting, and feedback documentation.</div>
+        <div class="tags" style="margin-bottom:14px;"><span class="tag hi">EdTech</span><span class="tag">Platform Support</span><span class="tag">User Testing</span><span class="tag">Documentation</span></div>
+        <a href="https://www.maita.africa/" target="_blank" class="proj-link">Visit Maita Africa →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sh-wrap reveal"><div class="sh-pill">Experience</div><h2 class="sh">Work History</h2></div>
+    <div class="card exp-card reveal">
+      <div class="exp-icon ic-teal">📊</div>
+      <div>
+        <div class="exp-year">2024</div>
+        <div class="exp-role">Enumerator</div>
+        <div class="exp-org">Community Technology Development Organization (CTDO)</div>
+        <ul class="exp-list">
+          <li>Collected and recorded field data with high accuracy during a national assistance program.</li>
+          <li>Maintained data integrity under minimal supervision in fast-paced field conditions.</li>
+          <li>Adapted quickly to fieldwork requirements and professional data collection protocols.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFT SKILLS -->
+  <section>
+    <div class="sh-wrap reveal"><div class="sh-pill">Personal</div><h2 class="sh">Soft Skills</h2></div>
+    <div class="soft-grid">
+      <div class="card soft-card reveal"><div class="soft-icon-wrap ic-blue">🔄</div><div class="soft-label">Adaptability & Teamwork</div></div>
+      <div class="card soft-card reveal"><div class="soft-icon-wrap ic-purple">💬</div><div class="soft-label">Strong Communication</div></div>
+      <div class="card soft-card reveal"><div class="soft-icon-wrap ic-green">🧠</div><div class="soft-label">Analytical Thinking</div></div>
+      <div class="card soft-card reveal"><div class="soft-icon-wrap ic-orange">🚗</div><div class="soft-label">Class 4 Driver's Licence</div></div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section>
+    <div class="sh-wrap reveal"><div class="sh-pill">Interests</div><h2 class="sh">Beyond the <span>Code</span></h2></div>
+    <div class="feat-grid">
+      <div class="card feat-card reveal"><div class="feat-icon ic-teal">🖥️</div><div class="feat-title">Emerging Technologies</div><div class="feat-desc">Exploring programming tutorials and keeping up with the latest IT technologies and trends.</div></div>
+      <div class="card feat-card reveal"><div class="feat-icon ic-blue">🔗</div><div class="feat-title">Networking & Systems</div><div class="feat-desc">Passionate about how systems connect, communicate, and scale across networks.</div></div>
+      <div class="card feat-card reveal"><div class="feat-icon ic-green">💪</div><div class="feat-title">Fitness & Growth</div><div class="feat-desc">Committed to personal development — physically, mentally, and professionally.</div></div>
+      <div class="card feat-card reveal"><div class="feat-icon ic-pink">🎯</div><div class="feat-title">Problem Solving</div><div class="feat-desc">Enjoys tackling complex technical challenges and finding efficient, elegant solutions.</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-card reveal">
+      <div class="c-pill">Get In Touch</div>
+      <h2 class="c-title">Let's Work <span>Together</span></h2>
+      <p class="c-sub">Open to industrial attachment and diverse roles within the IT field. Don't hesitate to reach out.</p>
+      <div class="c-links">
+        <a href="mailto:tatendamapako04@gmail.com" class="c-link"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>tatendamapako04@gmail.com</a>
+        <a href="tel:+263783514879" class="c-link"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.91 15.91 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.47 11.47 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.39 21 3 14.61 3 7a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.47 11.47 0 0 0 .57 3.58 1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>+263 78 351 4879</a>
+        <div class="c-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>38 Glenville Road, Hatfield, Harare</div>
+      </div>
+      <div class="c-foot">ID No: 63-3470995D34 &nbsp;·&nbsp; © 2026 Tatenda Mapako</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const links = document.querySelectorAll('.nav-ul a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s => { if (scrollY >= s.offsetTop - 90) cur = s.id; });
+    links.forEach(a => {
+      const on = a.getAttribute('href') === '#' + cur;
+      a.style.background = on ? 'rgba(79,124,255,.12)' : '';
+      a.style.color = on ? 'var(--blue)' : '';
+    });
+  });
+</script>
+</body>
+</html>
